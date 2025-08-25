@@ -559,16 +559,16 @@
         
         // Countdown timer - FIXED
         function updateCountdown() {
-            // Set the launch date to August 27th of the current year
+            // Set the launch date to August 28th of the current year
             const currentYear = new Date().getFullYear();
-            const launchDate = new Date(`August 27, ${currentYear} 00:00:00`).getTime();
+            const launchDate = new Date(`August 28, ${currentYear} 00:00:00`).getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
             
             // If the launch date has passed this year, set it to next year
             if (distance < 0) {
                 const nextYear = currentYear + 1;
-                const nextLaunchDate = new Date(`August 27, ${nextYear} 00:00:00`).getTime();
+                const nextLaunchDate = new Date(`August 28, ${nextYear} 00:00:00`).getTime();
                 const newDistance = nextLaunchDate - now;
                 calculateTime(newDistance);
                 return;
