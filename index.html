@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anika AI Labs - Coming Soon</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #6366f1;
@@ -58,11 +61,91 @@
             --card-bg: rgba(255, 255, 255, 0.12);
         }
 
+        .theme-7 {
+            --primary: #fbbf24;
+            --secondary: #f59e0b;
+            --accent: #d97706;
+            --background: linear-gradient(135deg, #451a03 0%, #78350f 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-8 {
+            --primary: #06d6a0;
+            --secondary: #118ab2;
+            --accent: #073b4c;
+            --background: linear-gradient(135deg, #001d3d 0%, #003566 100%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-9 {
+            --primary: #ff006e;
+            --secondary: #8338ec;
+            --accent: #3a86ff;
+            --background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+            --card-bg: rgba(255, 255, 255, 0.12);
+        }
+
+        .theme-10 {
+            --primary: #ffbe0b;
+            --secondary: #fb5607;
+            --accent: #8338ec;
+            --background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --card-bg: rgba(255, 255, 255, 0.15);
+        }
+
+        .theme-11 {
+            --primary: #00f5ff;
+            --secondary: #ff1493;
+            --accent: #32cd32;
+            --background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            --card-bg: rgba(255, 255, 255, 0.08);
+        }
+
+        .theme-12 {
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --accent: #45b7d1;
+            --background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-13 {
+            --primary: #a8e6cf;
+            --secondary: #ffd3a5;
+            --accent: #fd9853;
+            --background: linear-gradient(135deg, #0f4c75 0%, #3282b8 100%);
+            --card-bg: rgba(255, 255, 255, 0.12);
+        }
+
+        .theme-14 {
+            --primary: #ff9a9e;
+            --secondary: #fecfef;
+            --accent: #fecfef;
+            --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: rgba(255, 255, 255, 0.15);
+        }
+
+        .theme-15 {
+            --primary: #84fab0;
+            --secondary: #8fd3f4;
+            --accent: #a8edea;
+            --background: linear-gradient(135deg, #2c3e50 0%, #4a6741 100%);
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-16 {
+            --primary: #ffecd2;
+            --secondary: #fcb69f;
+            --accent: #ff8a80;
+            --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            --card-bg: rgba(255, 255, 255, 0.12);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Exo 2', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
@@ -100,6 +183,566 @@
             }
         }
 
+        /* Mobile Robot Builder Styles */
+        .robot-builder {
+            position: fixed;
+            width: 80px;
+            height: 80px;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .robot-builder .robot {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            animation: robotWork 2s ease-in-out infinite;
+        }
+
+        .robot-builder .robot-body {
+            width: 50px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 15px 15px 8px 8px;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.7);
+            animation: robotPulse 1.5s ease-in-out infinite;
+        }
+
+        .robot-builder .robot-head {
+            width: 40px;
+            height: 35px;
+            background: var(--secondary);
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 5px;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+        }
+
+        .robot-builder .robot-eyes {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .robot-builder .robot-eye {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: robotBlink 2s infinite;
+        }
+
+        .robot-builder .robot-antenna {
+            width: 2px;
+            height: 15px;
+            background: var(--accent);
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .robot-builder .robot-antenna::after {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: antennaGlow 1s ease-in-out infinite;
+        }
+
+        .robot-builder .robot-arms {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            height: 25px;
+        }
+
+        .robot-builder .robot-arm {
+            width: 10px;
+            height: 25px;
+            background: var(--primary);
+            border-radius: 5px;
+            position: absolute;
+            top: 0;
+            animation: robotWork 1s ease-in-out infinite;
+        }
+
+        .robot-builder .robot-arm.left {
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .robot-builder .robot-arm.right {
+            right: 0;
+            animation-delay: 0.5s;
+        }
+
+        .robot-builder .robot-legs {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 15px;
+        }
+
+        .robot-builder .robot-leg {
+            width: 8px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 4px;
+            position: absolute;
+            bottom: 0;
+            animation: robotWalk 0.8s ease-in-out infinite;
+        }
+
+        .robot-builder .robot-leg.left {
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .robot-builder .robot-leg.right {
+            right: 20px;
+            animation-delay: 0.4s;
+        }
+
+        /* Robot Builder Animations */
+        @keyframes robotWork {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-3px) rotate(-5deg); }
+            75% { transform: translateY(-3px) rotate(5deg); }
+        }
+
+        /* Robot Builder Movement Paths */
+        .robot-builder.position-1 {
+            top: 20%;
+            left: 10%;
+            animation: buildAtPosition1 4s ease-in-out infinite;
+        }
+
+        .robot-builder.position-2 {
+            top: 30%;
+            right: 15%;
+            animation: buildAtPosition2 4s ease-in-out infinite;
+        }
+
+        .robot-builder.position-3 {
+            bottom: 25%;
+            left: 20%;
+            animation: buildAtPosition3 4s ease-in-out infinite;
+        }
+
+        .robot-builder.position-4 {
+            bottom: 15%;
+            right: 10%;
+            animation: buildAtPosition4 4s ease-in-out infinite;
+        }
+
+        .robot-builder.position-5 {
+            top: 60%;
+            left: 50%;
+            animation: buildAtPosition5 4s ease-in-out infinite;
+        }
+
+        @keyframes buildAtPosition1 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(10px, -5px) scale(1.1); }
+            50% { transform: translate(-5px, 10px) scale(0.9); }
+            75% { transform: translate(5px, -10px) scale(1.05); }
+        }
+
+        @keyframes buildAtPosition2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-10px, 5px) scale(1.1); }
+            50% { transform: translate(5px, -10px) scale(0.9); }
+            75% { transform: translate(-5px, 10px) scale(1.05); }
+        }
+
+        @keyframes buildAtPosition3 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(15px, -8px) scale(1.1); }
+            50% { transform: translate(-8px, 12px) scale(0.9); }
+            75% { transform: translate(8px, -12px) scale(1.05); }
+        }
+
+        @keyframes buildAtPosition4 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(-15px, 8px) scale(1.1); }
+            50% { transform: translate(8px, -12px) scale(0.9); }
+            75% { transform: translate(-8px, 12px) scale(1.05); }
+        }
+
+        @keyframes buildAtPosition5 {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            25% { transform: translate(-50%, -50%) translate(20px, -10px) scale(1.1); }
+            50% { transform: translate(-50%, -50%) translate(-10px, 20px) scale(0.9); }
+            75% { transform: translate(-50%, -50%) translate(10px, -20px) scale(1.05); }
+        }
+
+        /* Building Effects */
+        .building-effect {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 1s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Robot Animation Styles */
+        .robot-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .robot {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            animation: robotFloat 4s ease-in-out infinite;
+        }
+
+        .robot-body {
+            width: 80px;
+            height: 100px;
+            background: var(--primary);
+            border-radius: 20px 20px 10px 10px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+            animation: robotPulse 2s ease-in-out infinite;
+        }
+
+        .robot-head {
+            width: 60px;
+            height: 50px;
+            background: var(--secondary);
+            border-radius: 15px;
+            position: absolute;
+            top: 0;
+            left: 10px;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+
+        .robot-eyes {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .robot-eye {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: robotBlink 3s infinite;
+        }
+
+        .robot-antenna {
+            width: 3px;
+            height: 20px;
+            background: var(--accent);
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .robot-antenna::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: absolute;
+            top: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: antennaGlow 1.5s ease-in-out infinite;
+        }
+
+        .robot-arms {
+            position: absolute;
+            top: 30px;
+            width: 100%;
+            height: 40px;
+        }
+
+        .robot-arm {
+            width: 15px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 8px;
+            position: absolute;
+            top: 0;
+            animation: robotWave 2s ease-in-out infinite;
+        }
+
+        .robot-arm.left {
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .robot-arm.right {
+            right: 0;
+            animation-delay: 1s;
+        }
+
+        .robot-legs {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+        }
+
+        .robot-leg {
+            width: 12px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 6px;
+            position: absolute;
+            bottom: 0;
+            animation: robotWalk 1s ease-in-out infinite;
+        }
+
+        .robot-leg.left {
+            left: 25px;
+            animation-delay: 0s;
+        }
+
+        .robot-leg.right {
+            right: 25px;
+            animation-delay: 0.5s;
+        }
+
+        /* Robot Animations */
+        @keyframes robotFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes robotPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes robotBlink {
+            0%, 90%, 100% { opacity: 1; }
+            95% { opacity: 0; }
+        }
+
+        @keyframes antennaGlow {
+            0%, 100% { opacity: 1; box-shadow: 0 0 5px var(--accent); }
+            50% { opacity: 0.5; box-shadow: 0 0 15px var(--accent); }
+        }
+
+        @keyframes robotWave {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-10deg); }
+            75% { transform: rotate(10deg); }
+        }
+
+        @keyframes robotWalk {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* Enhanced Background Animations */
+        .geometric-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: geometricFloat 20s infinite linear;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid var(--primary);
+        }
+
+        .square {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            transform: rotate(45deg);
+        }
+
+        .circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .hexagon {
+            width: 40px;
+            height: 23px;
+            background: var(--primary);
+            position: relative;
+        }
+
+        .hexagon:before,
+        .hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+        }
+
+        .hexagon:before {
+            bottom: 100%;
+            border-bottom: 11.5px solid var(--primary);
+        }
+
+        .hexagon:after {
+            top: 100%;
+            border-top: 11.5px solid var(--primary);
+        }
+
+        @keyframes geometricFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Theme-specific animations */
+        .theme-7 .robot {
+            animation: robotFloat 3s ease-in-out infinite, robotGlow 2s ease-in-out infinite;
+        }
+
+        .theme-8 .robot {
+            animation: robotFloat 5s ease-in-out infinite, robotSpin 4s linear infinite;
+        }
+
+        .theme-9 .robot {
+            animation: robotFloat 2s ease-in-out infinite, robotBounce 1s ease-in-out infinite;
+        }
+
+        .theme-10 .robot {
+            animation: robotFloat 6s ease-in-out infinite, robotShake 0.5s ease-in-out infinite;
+        }
+
+        .theme-11 .robot {
+            animation: robotFloat 4s ease-in-out infinite, robotNeon 1s ease-in-out infinite;
+        }
+
+        .theme-12 .robot {
+            animation: robotFloat 3.5s ease-in-out infinite, robotRainbow 3s linear infinite;
+        }
+
+        .theme-13 .robot {
+            animation: robotFloat 4.5s ease-in-out infinite, robotGentle 2s ease-in-out infinite;
+        }
+
+        .theme-14 .robot {
+            animation: robotFloat 3.2s ease-in-out infinite, robotSoft 1.8s ease-in-out infinite;
+        }
+
+        .theme-15 .robot {
+            animation: robotFloat 4.8s ease-in-out infinite, robotNature 2.5s ease-in-out infinite;
+        }
+
+        .theme-16 .robot {
+            animation: robotFloat 3.8s ease-in-out infinite, robotSunset 2.2s ease-in-out infinite;
+        }
+
+        @keyframes robotGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.5); }
+        }
+
+        @keyframes robotSpin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes robotBounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes robotShake {
+            0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+            25% { transform: translate(-50%, -50%) translateX(-2px); }
+            75% { transform: translate(-50%, -50%) translateX(2px); }
+        }
+
+        @keyframes robotNeon {
+            0%, 100% { filter: drop-shadow(0 0 5px var(--primary)); }
+            50% { filter: drop-shadow(0 0 20px var(--primary)); }
+        }
+
+        @keyframes robotRainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes robotGentle {
+            0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) scale(1.02) rotate(1deg); }
+        }
+
+        @keyframes robotSoft {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes robotNature {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            25% { transform: translate(-50%, -50%) scale(1.03); }
+            75% { transform: translate(-50%, -50%) scale(0.98); }
+        }
+
+        @keyframes robotSunset {
+            0%, 100% { filter: sepia(0.3) saturate(1.2); }
+            50% { filter: sepia(0.5) saturate(1.5); }
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -118,22 +761,147 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            font-family: 'Orbitron', monospace;
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 900;
             color: var(--primary);
-            text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+            animation: logoShimmer 3s ease-in-out infinite, logoFloat 4s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(99, 102, 241, 0.7);
             transition: var(--transition);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            border-radius: 15px;
+            opacity: 0.2;
+            z-index: -1;
+            animation: logoGlow 2s ease-in-out infinite;
         }
 
         .logo i {
             font-size: 2.2rem;
-            animation: pulse 2s infinite;
+            color: var(--primary);
+            animation: logoIconSpin 3s linear infinite, logoIconPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px var(--primary));
+            text-shadow: 0 0 15px var(--primary);
+            position: relative;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .logo i::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.3;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: iconGlow 2s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .logo .logo-text {
+            position: relative;
+            overflow: hidden;
+            color: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoGradientShift 3s ease-in-out infinite;
+            /* Fallback for browsers that don't support background-clip: text */
+            -webkit-text-stroke: 1px var(--primary);
+        }
+
+        /* Fallback for browsers without background-clip support */
+        @supports not (background-clip: text) {
+            .logo .logo-text {
+                background: none;
+                -webkit-text-fill-color: var(--primary);
+                -webkit-text-stroke: none;
+                animation: logoColorShift 3s ease-in-out infinite;
+            }
+        }
+
+        .logo .logo-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: logoShine 3s ease-in-out infinite;
+        }
+
+        @keyframes logoShimmer {
+            0%, 100% { 
+                color: var(--primary);
+                text-shadow: 0 0 20px rgba(99, 102, 241, 0.7);
+            }
+            50% { 
+                color: var(--secondary);
+                text-shadow: 0 0 25px rgba(16, 185, 129, 0.8);
+            }
+        }
+
+        @keyframes logoGradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes logoColorShift {
+            0%, 100% { color: var(--primary); }
+            33% { color: var(--secondary); }
+            66% { color: var(--accent); }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+
+        @keyframes logoIconSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes logoIconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes iconGlow {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        @keyframes logoShine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
         }
 
         nav ul {
@@ -179,25 +947,92 @@
         }
 
         h1 {
+            font-family: 'Orbitron', monospace;
             font-size: 3.5rem;
+            font-weight: 900;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shimmer 3s infinite;
+            animation: shimmer 3s infinite, textGlow 2s ease-in-out infinite;
+            text-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+            position: relative;
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary); }
         }
 
         @keyframes shimmer {
-            0% { background-position: -100% 0; }
-            100% { background-position: 200% 0; }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 5px var(--primary));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px var(--primary)) drop-shadow(0 0 30px var(--secondary));
+                transform: scale(1.02);
+            }
+        }
+
+        .animated-text {
+            display: inline-block;
+            animation: textFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes textFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .subtitle {
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.5rem;
+            font-weight: 400;
             max-width: 700px;
             margin: 0 auto 3rem;
             color: var(--text);
             opacity: 0.9;
+            animation: textFloat 3s ease-in-out infinite;
+            line-height: 1.6;
+        }
+
+        .subtitle .gradient-text {
+            font-weight: 600;
         }
 
         .countdown {
@@ -419,7 +1254,58 @@
 </script>
 </head>
 <body>
+    <div class="geometric-bg" id="geometricBg"></div>
     <div class="particles" id="particles"></div>
+    
+    <!-- Robot Animation -->
+    <div class="robot-container">
+        <div class="robot">
+            <div class="robot-head">
+                <div class="robot-antenna"></div>
+                <div class="robot-eyes">
+                    <div class="robot-eye"></div>
+                    <div class="robot-eye"></div>
+                </div>
+            </div>
+            <div class="robot-body">
+                <div class="robot-arms">
+                    <div class="robot-arm left"></div>
+                    <div class="robot-arm right"></div>
+                </div>
+                <div class="robot-legs">
+                    <div class="robot-leg left"></div>
+                    <div class="robot-leg right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Robot Builder -->
+    <div class="robot-builder position-1" id="robotBuilder">
+        <div class="robot">
+            <div class="robot-head">
+                <div class="robot-antenna"></div>
+                <div class="robot-eyes">
+                    <div class="robot-eye"></div>
+                    <div class="robot-eye"></div>
+                </div>
+            </div>
+            <div class="robot-body">
+                <div class="robot-arms">
+                    <div class="robot-arm left"></div>
+                    <div class="robot-arm right"></div>
+                </div>
+                <div class="robot-legs">
+                    <div class="robot-leg left"></div>
+                    <div class="robot-leg right"></div>
+                </div>
+            </div>
+        </div>
+        <div class="building-effect" style="top: -10px; left: 10px; animation-delay: 0s;"></div>
+        <div class="building-effect" style="top: -5px; right: 15px; animation-delay: 0.3s;"></div>
+        <div class="building-effect" style="bottom: -5px; left: 20px; animation-delay: 0.6s;"></div>
+    </div>
+    
     <div class="cursor-follower" id="cursorFollower">
         <i class="fas fa-robot" id="cursorIcon"></i>
     </div>
@@ -428,7 +1314,7 @@
         <header>
             <div class="logo">
                 <i class="fas fa-brain"></i>
-                <span>Anika AI Labs</span>
+                <span class="logo-text">Anika AI Labs</span>
             </div>
             <nav>
                 <ul>
@@ -439,8 +1325,8 @@
         </header>
 
         <section class="hero" id="home">
-            <h1>Something Amazing Is Coming</h1>
-            <p class="subtitle">We're crafting the future of AI-powered applications. Stay tuned for our launch!</p>
+            <h1 class="typewriter" id="mainTitle">We're Almost There!</h1>
+            <p class="subtitle">We're crafting the <span class="gradient-text animated-text">future</span> of <span class="gradient-text animated-text">AI-powered</span> applications. <span class="gradient-text animated-text">Stay tuned</span> for our launch!</p>
             
             <div class="countdown">
                 <div class="countdown-item">
@@ -461,7 +1347,7 @@
                 </div>
             </div>
             
-            <p class="launch-date">Launching on <span>September 9, 2025</span></p>
+            <p class="launch-date">Launching on <span>September 23, 2025</span></p>
         </section>
 
         <section class="about-section" id="about">
@@ -561,14 +1447,14 @@
         function updateCountdown() {
             // Set the launch date to August 28th of the current year
             const currentYear = new Date().getFullYear();
-            const launchDate = new Date(`September 9, ${currentYear} 00:00:00`).getTime();
+            const launchDate = new Date(`September 23, ${currentYear} 00:00:00`).getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
             
             // If the launch date has passed this year, set it to next year
             if (distance < 0) {
                 const nextYear = currentYear + 1;
-                const nextLaunchDate = new Date(`September 9, ${nextYear} 00:00:00`).getTime();
+                const nextLaunchDate = new Date(`September 23, ${nextYear} 00:00:00`).getTime();
                 const newDistance = nextLaunchDate - now;
                 calculateTime(newDistance);
                 return;
@@ -589,7 +1475,34 @@
             document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
         }
         
-        // Theme switcher - now every 2 minutes
+        // Create geometric background shapes
+        function createGeometricBackground() {
+            const geometricBg = document.getElementById('geometricBg');
+            const shapeCount = 20;
+            
+            for (let i = 0; i < shapeCount; i++) {
+                const shape = document.createElement('div');
+                shape.classList.add('geometric-shape');
+                
+                // Random shape type
+                const shapes = ['triangle', 'square', 'circle', 'hexagon'];
+                const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+                shape.classList.add(randomShape);
+                
+                // Random properties
+                const posX = Math.random() * 100;
+                const delay = Math.random() * 20;
+                const duration = 15 + Math.random() * 10; // 15-25 seconds
+                
+                shape.style.left = `${posX}%`;
+                shape.style.animationDelay = `${delay}s`;
+                shape.style.animationDuration = `${duration}s`;
+                
+                geometricBg.appendChild(shape);
+            }
+        }
+        
+        // Theme switcher - now every 1 minute
         function initThemeSwitcher() {
             const themes = [
                 { name: 'Future Dark', class: '' },
@@ -597,21 +1510,32 @@
                 { name: 'Green Synth', class: 'theme-3' },
                 { name: 'Orange Neon', class: 'theme-4' },
                 { name: 'Pink Fusion', class: 'theme-5' },
-                { name: 'Blue Ocean', class: 'theme-6' }
+                { name: 'Blue Ocean', class: 'theme-6' },
+                { name: 'Golden Fire', class: 'theme-7' },
+                { name: 'Aqua Deep', class: 'theme-8' },
+                { name: 'Cyber Punk', class: 'theme-9' },
+                { name: 'Sunset Glow', class: 'theme-10' },
+                { name: 'Neon Matrix', class: 'theme-11' },
+                { name: 'Coral Reef', class: 'theme-12' },
+                { name: 'Mint Fresh', class: 'theme-13' },
+                { name: 'Lavender Mist', class: 'theme-14' },
+                { name: 'Forest Green', class: 'theme-15' },
+                { name: 'Ocean Breeze', class: 'theme-16' }
             ];
             
             let currentTheme = 0;
             const themeIndicator = document.getElementById('themeIndicator');
             
-            // Switch theme every 2 minutes (120000 milliseconds)
+            // Switch theme every 1 minute (60000 milliseconds)
             setInterval(() => {
                 currentTheme = (currentTheme + 1) % themes.length;
                 document.body.className = themes[currentTheme].class;
                 themeIndicator.innerText = `Theme: ${themes[currentTheme].name}`;
                 
-                // Update particles color when theme changes
+                // Update particles and geometric shapes color when theme changes
                 updateParticlesColor();
-            }, 120000); // 2 minutes in milliseconds
+                updateGeometricShapesColor();
+            }, 60000); // 1 minute in milliseconds
             
             // Initial theme
             document.body.className = themes[currentTheme].class;
@@ -629,11 +1553,187 @@
             });
         }
         
+        // Update geometric shapes color based on current theme
+        function updateGeometricShapesColor() {
+            const shapes = document.querySelectorAll('.geometric-shape');
+            const computedStyle = getComputedStyle(document.documentElement);
+            const primaryColor = computedStyle.getPropertyValue('--primary');
+            const secondaryColor = computedStyle.getPropertyValue('--secondary');
+            const accentColor = computedStyle.getPropertyValue('--accent');
+            
+            shapes.forEach(shape => {
+                if (shape.classList.contains('triangle')) {
+                    shape.style.borderBottomColor = primaryColor;
+                } else if (shape.classList.contains('square')) {
+                    shape.style.background = secondaryColor;
+                } else if (shape.classList.contains('circle')) {
+                    shape.style.background = accentColor;
+                } else if (shape.classList.contains('hexagon')) {
+                    shape.style.background = primaryColor;
+                    const before = shape.querySelector('::before');
+                    const after = shape.querySelector('::after');
+                    if (before) before.style.borderBottomColor = primaryColor;
+                    if (after) after.style.borderTopColor = primaryColor;
+                }
+            });
+        }
+        
+        // Typewriter effect with rotating messages
+        function initTypewriterEffect() {
+            const title = document.getElementById('mainTitle');
+            const messages = [
+                "We're Almost There!",
+                "Something Amazing Is Coming",
+                "The Future Is Near",
+                "Revolution Starts Soon",
+                "AI Innovation Awaits",
+                "Get Ready for Launch",
+                "The Countdown Begins",
+                "Innovation Unleashed",
+                "Tomorrow's Tech Today",
+                "The Future Is Now"
+            ];
+            
+            let currentMessageIndex = 0;
+            let isTyping = false;
+            
+            const typeWriter = (text, callback) => {
+                if (isTyping) return;
+                isTyping = true;
+                
+                title.textContent = '';
+                title.style.borderRight = '3px solid var(--primary)';
+                
+                let i = 0;
+                const typeChar = () => {
+                    if (i < text.length) {
+                        title.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeChar, 80);
+                    } else {
+                        // Keep cursor for a moment, then remove it
+                        setTimeout(() => {
+                            title.style.borderRight = 'none';
+                            isTyping = false;
+                            if (callback) callback();
+                        }, 2000);
+                    }
+                };
+                
+                typeChar();
+            };
+            
+            const eraseText = (callback) => {
+                if (isTyping) return;
+                isTyping = true;
+                
+                title.style.borderRight = '3px solid var(--primary)';
+                let text = title.textContent;
+                
+                const eraseChar = () => {
+                    if (text.length > 0) {
+                        text = text.slice(0, -1);
+                        title.textContent = text;
+                        setTimeout(eraseChar, 50);
+                    } else {
+                        title.style.borderRight = 'none';
+                        isTyping = false;
+                        if (callback) callback();
+                    }
+                };
+                
+                eraseChar();
+            };
+            
+            const cycleMessages = () => {
+                const currentMessage = messages[currentMessageIndex];
+                
+                typeWriter(currentMessage, () => {
+                    setTimeout(() => {
+                        eraseText(() => {
+                            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                            setTimeout(cycleMessages, 1000);
+                        });
+                    }, 3000);
+                });
+            };
+            
+            // Start the cycle
+            setTimeout(cycleMessages, 1000);
+        }
+        
+        // Robot builder movement system
+        function initRobotBuilder() {
+            const robotBuilder = document.getElementById('robotBuilder');
+            const positions = ['position-1', 'position-2', 'position-3', 'position-4', 'position-5'];
+            let currentPosition = 0;
+            
+            // Move robot to different positions every 8 seconds
+            setInterval(() => {
+                // Remove current position class
+                robotBuilder.className = robotBuilder.className.replace(/position-\d+/, '');
+                
+                // Add new position class
+                currentPosition = (currentPosition + 1) % positions.length;
+                robotBuilder.classList.add(positions[currentPosition]);
+                
+                // Add building effects
+                createBuildingEffects(robotBuilder);
+                
+            }, 8000);
+        }
+        
+        // Create building effects around robot
+        function createBuildingEffects(robot) {
+            // Remove existing effects
+            const existingEffects = robot.querySelectorAll('.building-effect');
+            existingEffects.forEach(effect => effect.remove());
+            
+            // Create new effects
+            for (let i = 0; i < 5; i++) {
+                const effect = document.createElement('div');
+                effect.classList.add('building-effect');
+                
+                // Random position around robot
+                const angle = (i * 72) * (Math.PI / 180); // 72 degrees apart
+                const radius = 30 + Math.random() * 20;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+                
+                effect.style.left = `calc(50% + ${x}px)`;
+                effect.style.top = `calc(50% + ${y}px)`;
+                effect.style.animationDelay = `${i * 0.2}s`;
+                
+                robot.appendChild(effect);
+            }
+        }
+        
+        // Enhanced text animations
+        function initTextAnimations() {
+            // Animate subtitle words with staggered delay
+            const subtitleWords = document.querySelectorAll('.subtitle .gradient-text');
+            subtitleWords.forEach((word, index) => {
+                word.style.animationDelay = `${index * 0.5}s`;
+                word.style.animation = 'textFloat 2s ease-in-out infinite, gradientShift 3s ease-in-out infinite';
+            });
+            
+            // Add hover effects to countdown items
+            const countdownItems = document.querySelectorAll('.countdown-item');
+            countdownItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+                item.style.animation = 'textFloat 3s ease-in-out infinite';
+            });
+        }
+        
         // Initialize everything when page loads
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
+            createGeometricBackground();
             initCursorFollower();
             initThemeSwitcher();
+            initTypewriterEffect();
+            initRobotBuilder();
+            initTextAnimations();
             
             // Update countdown every second
             updateCountdown();
