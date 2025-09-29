@@ -1347,7 +1347,7 @@
                 </div>
             </div>
             
-            <p class="launch-date">Launching on <span>September 30, 2025</span></p>
+            <p class="launch-date">Launching on <span>October 13, 2025</span></p>
         </section>
 
         <section class="about-section" id="about">
@@ -1447,14 +1447,14 @@
         function updateCountdown() {
             // Set the launch date to August 28th of the current year
             const currentYear = new Date().getFullYear();
-            const launchDate = new Date(`September 30, ${currentYear} 00:00:00`).getTime();
+            const launchDate = new Date(`October 13, ${currentYear} 00:00:00`).getTime();
             const now = new Date().getTime();
             const distance = launchDate - now;
             
             // If the launch date has passed this year, set it to next year
             if (distance < 0) {
                 const nextYear = currentYear + 1;
-                const nextLaunchDate = new Date(`September 30, ${nextYear} 00:00:00`).getTime();
+                const nextLaunchDate = new Date(`October 13, ${nextYear} 00:00:00`).getTime();
                 const newDistance = nextLaunchDate - now;
                 calculateTime(newDistance);
                 return;
